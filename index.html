@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Api Moviles</title>
+     <!--metadata para PWA -->
+    <!--modificar color la barra de estado para android -->
+    <meta name="theme-color" content="#333a70">
+    <!-- Optimizacion del lado del SEO -->
+    <meta name="MobileOptimized" content="width">
+    <meta name="HandheldFriendly" content="true">
+    <!-- modificar barra de estado en dispositvo de IOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+    <!-- icon -->
+    <link rel="shortcut icon" href="./img/favicon.png" type="image/png" />
+    <link rel="apple-touch-icon" href="./img/favicon.png" />
+    <link rel="apple-touch-startup-icon" href="./img/favicon.png" />
+
+    <!-- manifest -->
+    <link rel="manifest" href="./manifest.json" />
+    <!--fin de PWA -->
+
+    <meta name="description" content="Buscardor de peliculas utilizando apis">
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+        <h1 style="text-align: center;"> {{title}}</h1>
+      
+        <hr>
+        <form @submit.prevent="getMovie">
+            <label>
+                Movie Name: <input type="text" v-model.trim="movieTitle"> </label>
+                <input type="submit" value="">
+        </form>
+    
+        <div class="container">
+            <h3> Movie: <span style="color: saddlebrown;">{{movieData.Title}}</span> </h3>
+            <h4> Year: <span style="color: #a3ac26;"></span>{{movieData.Year}}</span></h4>
+            <p> Genre: <span style="color: #77c98e;"></span>{{movieData.Genre}}</span></p>
+            <h5> Actor: <strong style="color: #4d7b94;">{{movieData.Actors}} </strong> </h5>
+            <img :src="movieData.Poster" :alt="movieData.imdbID" style="max-width: 300px;">
+        </div>
+    </div>
+
+    <script src="./js/load.js"></script>
+    <script src="./js/main.js"></script>
+    <script src="./js/mountApp.js"></script>    
+</body>
+</html>
